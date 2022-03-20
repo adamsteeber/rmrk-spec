@@ -1,35 +1,63 @@
-# RMRK.app Specification and Standards
+# RMRK.app Extrinsic-based Specifications and Standards
 
-This repository hosts standards for creating and interacting with [RMRK.app](https://rmrk.app) NFTs.
+This directory hosts extrinsic-based standards for creating and interacting with [RMRK.app](https://rmrk.app) NFTs.
 
-There are two types of standards: _entities_ and _interactions_. Entities are definitions for how a
-collection or NFT should be declared while being minted, so that tools can recognize them as valid.
-Interactions are interactions between the off-chain world and the RMRK protocol, between those NFTs,
-and between different users and NFTs.
+There are two types of extrinsic-based standards: _entities_ and _interactions_. Entities are definitions for how a
+collection, NFT, BASE, or metadata should be declared while being created, so that tools can recognize them as valid.
+Interactions are instructions to users for how to prepare remarks to be submitted on chain to maniputate the aforementioned entities.
 
 ## Interactions
 
-The standards currently cover the following basic interactions:
+### The 1.0.0 standard has the following interactions:
 
-- MINT creates a new collection
-- MINTNFT creates a new NFT inside an existing collection
-- CONSUME burns an NFT
-- CHANGEISSUER changes the owner of the collection, affecting who can issue NFTs
-- SEND, BUY are transactional
-- LIST is used to list an NFT as for-sale on-chain
-- MIGRATE (starting with 1.0.0) allows a collection issuer to migrate a collection and its child
-  NFTs to a new standard
+- [MINT](rmrk1.0.0/interactions/mint.md) (Minting a collection)
+- [CHANGEISSUER](rmrk1.0.0/interactions/changeissuer.md) (Changing the issuer of a collection)
+- [MINTNFT](rmrk1.0.0/interactions/mintnft.md) (Minting an NFT inside a collection)
+- [SEND](rmrk1.0.0/interactions/send.md) (Sending an NFT to a recipient)
+- [LIST](rmrk1.0.0/interactions/list.md) (List an NFT for sale)
+- [BUY](rmrk1.0.0/interactions/buy.md) (Buy an NFT)
+- [CONSUME](rmrk1.0.0/interactions/consume.md) (Burn an NFT)
+- [EMOTE](rmrk1.0.0/interactions/emote.md) (Send a reaction/emoticon)
 
-Inspect each standard folder to see the specifics about these interactions and how to integrate
-them.
+### The 2.0.0 standard has the following interactions:
+
+- [ACCEPT](rmrk2.0.0/interactions/accept.md) (Accept the addition of a new resource to an existing NFT, or
+the addition of a child into a parent NFT)
+- [BASE](rmrk2.0.0/interactions/base.md) (Create a Base)
+- [BUY](rmrk2.0.0/interactions/buy.md) (Buy an NFT)
+- [CHANGEISSUER](rmrk2.0.0/interactions/changeissuer.md) (Changing the issuer of a collection or base)
+- [BURN](rmrk2.0.0/interactions/burn.md) (Burn an NFT)
+- [CREATE](rmrk2.0.0/interactions/create.md) (Minting a collection, previously MINT)
+- [EMOTE](rmrk2.0.0/interactions/emote.md) (Send a reaction/emoticon)
+- [EQUIP](rmrk2.0.0/interactions/equip.md) (Equip a child NFT into a parent's slot, or unequip)
+- [EQUIPPABLE](rmrk2.0.0/interactions/equippable.md) (Changes the list of equippable collections on a
+base's part)
+- [LIST](rmrk2.0.0/interactions/list.md) (List an NFT for sale)
+- [LOCK](rmrk2.0.0/interactions/lock.md) (Locking a collection)
+- [MINT](rmrk2.0.0/interactions/mint.md) (Minting an NFT inside a collection, previously "MINTNFT")
+- [RESADD](rmrk2.0.0/interactions/resadd.md) (Add a new resource to an NFT as the collection issuer)
+- [SEND](rmrk2.0.0/interactions/send.md) (Sending an NFT to a recipient)
+- [SETPROPERTY](rmrk2.0.0/interactions/setproperty.md) (Set a custom value on an NFT)
+- [SETPRIORITY](rmrk2.0.0/interactions/setpriority.md) (Set a different order of resource priority)
+- [THEMEADD](rmrk2.0.0/interactions/themeadd.md) (Add a new theme to a base)
 
 ## Entities
 
-A collection of NFTs is an entity. An NFT inside a collection is an entity as well.
+### The 1.0.0 standard has the following entities:
+
+- [COLLECTION + Metadata](rmrk1.0.0/entities/collection.md)
+- [NFT + Metadata](rmrk1.0.0/entities/nft.md)
+
+### The 2.0.0 standard has the following entities:
+
+- [Collection](rmrk2.0.0/entities/collection.md)
+- [NFT](rmrk2.0.0/entities/nft.md)
+- [BASE](rmrk2.0.0/entities/base.md)
+- [Metadata](rmrk2.0.0/entities/metadata.md)
 
 ## Releases
 
-RMRK standards versions will be tagged as a [release](/Swader/rmrk-spec/releases). Each release will
+RMRK standards versions will be tagged as a [release](/rmrk-team/rmrk-spec/releases). Each release will
 contain all previous major and minor versions so that an implementer checking out the latest release
 can decide which ones to support alongside the latest.
 
@@ -41,14 +69,10 @@ newer version of the collection) or a [MIGRATE](#interactions) interaction. To b
 version changes, please _Watch_ this repo or [subscribe to Dot Leap](https://dotleap.substack.com)
 or [NFT Review](https://news.nft.review).
 
-### Currently published standards:
-
-- [0.1](https://github.com/Swader/rmrk-spec/releases/tag/0.1)
-- [1.0.0](https://github.com/Swader/rmrk-spec/releases/tag/1.0.0)
-
 ### Standards under development:
 
-- n/a
+- [EVM](../evm)
+- [Pallets](../pallets)
 
 ## Contributing
 
@@ -62,7 +86,11 @@ Interested in implementing these standards? Check out the
 
 The following is a list of implementations of these standards:
 
-- [RMRK.app Tools (TypeScript)](https://github.com/swader/rmrk-tools) (IN DEVELOPMENT)
+- [Singular 1.0](https://singular.rmrk.app/)
+- [Kanaria App](https://kanaria.rmrk.app/)
+- [Singular 2.0](https://singular.app/)
+- [Kodadot](https://kodadot.xyz/)
+- [Talisman](https://app.talisman.xyz/nfts)
 
 ## Extending the Standard
 
