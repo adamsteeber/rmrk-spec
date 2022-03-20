@@ -2,31 +2,32 @@
 
 React to an [NFT](../entities/nft.md) with an emoticon.
 
-You can only EMOTE on an existing NFT (one that has not been [CONSUMEd](consume.md) yet).
+You can only EMOTE on an existing NFT (i.e. one that has not been issued a [CONSUME](consume.md) interaction yet).
 
 ## Standard
 
-The format of a EMOTE interaction is `0x{bytes(rmrk::EMOTE::{version}::{id}::{emotion})}`.
+The format of an EMOTE interaction is:
+
+`0x{bytes(RMRK::EMOTE::{version}::{id}::{emotion})}`
 
 - `version` is the version of the standard used (e.g. `1.0.0`)
-- `id` is the [nft](../entities/nft.md)'s ID [computed field](../entity/nft.md/#computed-fields).
+- `id` is the [NFT](../entity/nft.md)'s ID [computed field](../entities/nft.md#computed-fields)
 - `emotion` is the unicode of the emoji (e.g Unicode for party popper 🎉 is
-  [1F389](https://emojipedia.org/emoji/🎉/).
+  [1f389](https://emojipedia.org/emoji/🎉/)
 
 ### Undo Emote
 
-A user can undo their emote by sending the same emote again. Thus, during consolidation of RMRK
-states:
+A user can undo their emote by sending the same emote again. Thus, a [consolidator](https://github.com/rmrk-team/rmrk-tools):
 
-- a tool should consider an emote of type E on NFT N by user U to be absent if `n(U:E,N)%2==0`
-- a tool should consider an emote of type E on NFT N by user U to be present if `n(U:E,N)%2!=0`
+- should consider an emote of type E on NFT N by user U to be absent if `n(U:E,N)%2 == 0`
+- should consider an emote of type E on NFT N by user U to be present if `n(U:E,N)%2 != 0`
 
 In other words, if there is an even number of emotes on an NFT by a single user, that user has NOT
 emoted. If there is an odd number, that user HAS emoted.
 
 Example:
 
-- Alice gives thumbs up to `5105000-0aff6865bed3a66b-DLEP-DL15-0000000000000001`. Now there is one
+- Alice gives thumbs up to `11238331-e0b9bdcc456a36497a-RMRKBNNRS-CHUNKY-0000000000000039`. Now there is one
   👍 emote on this NFT, shown as 👍 from Alice.
 - Alice changes her mind, removes thumbs up by sending it again. Now there are 2(👍) on this NFT, no
   👍 is shown on the NFT from Alice.
@@ -36,7 +37,7 @@ Example:
 ### Multiple Emotes
 
 It is perfectly valid for the same user to send multiple emotes to the same NFT. The same rules
-about Undoing apply individually to each emote.
+about undoing emotes applies individually to each emote.
 
 ### Supported Emotes
 
@@ -50,12 +51,14 @@ Emote spam is generally not a concern because each emote costs a transaction fee
 
 ## Examples
 
-```
-rmrk::EMOTE::1.0.0::5105000-0aff6865bed3a66b-DLEP-DL15-0000000000000001::1F389
-```
-
-Is submitted as:
+To emote 🎉 on `11238331-e0b9bdcc456a36497a-RMRKBNNRS-CHUNKY-0000000000000039`, the remark would be:
 
 ```
-0x726d726b3a3a454d4f54453a3a312e302e303a3a353130353030302d306166663638363562656433613636622d444c45502d444c31352d303030303030303030303030303030313a3a31463338390a
+RMRK::EMOTE::1.0.0::11238331-e0b9bdcc456a36497a-RMRKBNNRS-CHUNKY-0000000000000039::1f389
+```
+
+And would be submitted as:
+
+```
+0x524d524b3a3a454d4f54453a3a312e302e303a3a31313233383333312d6530623962646363343536613336343937612d524d524b424e4e52532d4348554e4b592d303030303030303030303030303033393a3a3166333839
 ```
