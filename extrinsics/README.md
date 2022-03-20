@@ -1,4 +1,4 @@
-# RMRK.app Extrinsic-based Specifications and Standards
+# RMRK Extrinsic-based Specifications and Standards
 
 This directory hosts extrinsic-based standards for creating and interacting with [RMRK.app](https://rmrk.app) NFTs.
 
