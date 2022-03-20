@@ -2,7 +2,7 @@
 
 This standard defines how **Collections** of NFTs are minted. Collections cannot be sent and are
 effectively immutable after being created, with the exception of the issuer value. The current
-issuer of the collection can assign a new issuer using a CHANGEISSUER interaction.
+issuer of the collection can assign a new issuer using a [CHANGEISSUER](../interactions/changeissuer.md) interaction.
 
 A collection is the context of one or more NFTs. For example, a Cryptokitty Generation 0 is an NFT
 in the "Generation 0 kitties" collection, and an ENS (Ethereum Name System) domain is part of the
@@ -11,13 +11,13 @@ be part of the POAP master collection. Every NFT must have a parent context it b
 
 ## Collection Standard
 
-A collection MUST adhere to the following standard.
+A collection **MUST** adhere to the following standard:
 
 ```json
 {
   "name": {
     "type": "string",
-    "description": "Name of the collection. Name must be limited to alphanumeric characters. Underscore is allowed as word separator. E.g. VALHELLO-ITEMS is NOT allowed. VALHELLO_ITEMS is allowed."
+    "description": "Name of the collection. Name must be limited to alphanumeric characters. Underscore is allowed as word separator. E.g. KANARIA-ITEMS is NOT allowed. KANARIA_ITEMS is allowed."
   },
   "max": {
     "type": "number",
@@ -25,15 +25,15 @@ A collection MUST adhere to the following standard.
   },
   "issuer": {
     "type": "string",
-    "description": "Issuer's address, e.g. CpjsLDC1JFyrhm3ftC9Gs4QoyrkHKhZKtK7YqGTRFtTafgp. Can be address different from minter."
+    "description": "Issuer's address, e.g. HeyRMRK7L7APFpBrBqeY62dNhFKVGP4JgwQpcog2VTb3RMU. Can be address different from minter."
   },
   "symbol": {
     "type": "string",
-    "description": "Ticker symbol by which to represent the token in wallets and UIs, e.g. ZOMB"
+    "description": "Ticker symbol by which to represent the token in wallets and UIs, e.g. RMRKBNNRS"
   },
   "id": {
     "type": "string",
-    "description": "A collection is uniquely identified by at least the first four and last four bytes of the original issuer's pubkey, combined with the symbol. This prevents anyone but the issuer from reusing the symbol, and prevents trading of fake NFTs with the same symbol. Example ID: 0aff6865bed3a66b-ZOMB."
+    "description": "A collection is uniquely identified by at least the first four and last four bytes of the original issuer's pubkey, combined with the symbol. This prevents anyone but the issuer from reusing the symbol, and prevents trading of fake NFTs with the same symbol. Example ID: e0b9bdcc456a36497a-RMRKBNNRS."
   },
   "metadata?": {
     "type": "string",
@@ -72,7 +72,7 @@ The `data` object is composed of:
 
 ## Metadata
 
-A collection SHOULD have metadata to describe it and help visualization on various platforms.
+A collection **SHOULD** have metadata to describe it and help visualization on various platforms:
 
 ```json
 {
@@ -84,17 +84,17 @@ A collection SHOULD have metadata to describe it and help visualization on vario
     "type": "array",
     "description": "An Array of JSON objects, matching OpenSea's: https://docs.opensea.io/docs/metadata-standards#section-attributes"
   },
-  "external_url": {
-    "type": "string",
-    "description": "HTTP or IPFS URL for finding out more about this project. If IPFS, MUST be in the format of ipfs://ipfs/HASH"
-  },
   "image": {
     "type": "string",
-    "description": "HTTP or IPFS URL to project's main image, in the vein of og:image. If IPFS, MUST be in the format of ipfs://ipfs/HASH"
+    "description": "HTTP(s) or IPFS URL to project's main image, in the vein of og:image. If IPFS, MUST be in the format of ipfs://ipfs/HASH"
   },
   "image_data": {
     "type": "string?",
     "description": "[OPTIONAL] Use only if you don't have the image field (they are mutually exclusive and image takes precedence). Raw base64 or SVG data for the image. If SVG, MUST start with <svg, if base64, MUST start with base64:"
+  },
+  "external_url": {
+    "type": "string",
+    "description": "[OPTIONAL] HTTP(s) or IPFS URL for finding out more about this project. If IPFS, MUST be in the format of ipfs://ipfs/HASH"
   }
 }
 ```
@@ -105,12 +105,12 @@ Collection:
 
 ```json
 {
-  "name": "Dot Leap Early Promoters",
-  "max": 100,
-  "issuer": "CpjsLDC1JFyrhm3ftC9Gs4QoyrkHKhZKtK7YqGTRFtTafgp",
-  "symbol": "DLEP",
-  "id": "0aff6865bed3a66b-DLEP",
-  "metadata": "ipfs://ipfs/QmVgs8P4awhZpFXhkkgnCwBp4AdKRj3F9K58mCZ6fxvn3j"
+  "name": "RMRK profile banners",
+  "max": 0,
+  "issuer": "HeyRMRK7L7APFpBrBqeY62dNhFKVGP4JgwQpcog2VTb3RMU",
+  "symbol": "RMRKBNNRS",
+  "id": "e0b9bdcc456a36497a-RMRKBNNRS",
+  "metadata": "ipfs://ipfs/bafkreid6qxa5sasknkyig7d42xac5u2sjlngmkajxz4mbohk2z2bnhnvku"
 }
 ```
 
@@ -118,9 +118,12 @@ Metadata:
 
 ```json
 {
-  "description": "Everyone who promoted [Dot Leap](https://dotleap.substack.com) via the in-email Tweet link is eligible.",
+  "description":"An original collection of RMRK profile banners",
+  "name": "RMRK profile banners",
   "attributes": [],
-  "external_url": "https://rmrk.app/registry/0aff6865bed3a66b-DLEP",
-  "image": "ipfs://ipfs/QmYcWFQCY1bAZ7ffRggt367McMN5gyZjXtribj5hzzeCWQ"
+  "external_url": "https://singular.rmrk.app",
+  "image": "ipfs://ipfs/bafybeigik44pgvetn7ob5l5j6i243yxgnzgip4koert567ycxvbjdcfo4y"
 }
 ```
+
+To see how this collection was minted, please see the [MINT examples](../interactions/mint.md#examples).
