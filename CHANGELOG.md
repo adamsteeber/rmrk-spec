@@ -1,26 +1,32 @@
-## RMRK v1.0.0 - 05.02.2021.
+## RMRK Specifications v2.0.0 - March 21st, 2022
 
-> ⚠ Because 0.1 was so broken it would have required a very large custom processor for a very small
-> number of published RMRKs, we decided to deprecate it fully, CONSUME all published NFTs, and
-> re-issue them, re-sending to their owners (this was done in agreement with both the current owners
-> and the original minter).
+Various superficial changes were made for the sake of consistency such as grammar, spelling, hyperlinks, and formatting.
 
-### RIPs
+### Creation of new directories and files. Moving and removing old directories and files.
 
-- [RIP #001](https://github.com/Swader/rmrk-spec/issues/2): the NFT entity's computed ID field has
-  been updated to include minting block number.
-- [RIP #002](https://github.com/Swader/rmrk-spec/issues/3): Embedded data - ability to directly add
-  data to an NFT and a collection, avoiding reliance on third party metadata. Accompanying metadata
-  is still recommended.
-- [RIP #005](https://github.com/Swader/rmrk-spec/issues/6): Changing recommendation to use
-  `batchAll` instead of `batch`
-- [RIP #006](https://github.com/Swader/rmrk-spec/issues/10): Implemented EMOTE interaction
-- [RIP #007](https://github.com/Swader/rmrk-spec/issues/13): Removed version from collection payload
+- created [`/evm`](/evm), [`/pallets`](/pallets), and [`/general`](/general)
+- replaced `/standards` with [`/extrinsics`](/extrinsics)
+- moved and updated `./README.md` to [`/extrinsics/README.md`](/extrinsics/README.md)
+- created [`./README.md`](./README.md) briefly describing the extrinsics, evm, and pallets standards
+- created [`/general/README.md`](/general/README.md) describing the RMRK NFT paradigm
+- replaced files in `/dumps` with .zip compressed directories containing full [`1.0.0`](/extrinsics/1.0.0) & [`2.0.0`](/extrinsics/2.0.0) unconsoidated & consolidated dumps
+- moved `/dumps` to [`/extrinsics/dumps`](/extrinsics/dumps)
+- moved and updated `/implementers-guide.md` to [`/extrinsics/implementers-guide.md`](/extrinsics/implementers-guide.md)
+- created placeholder README.md files in [`/evm`](/evm) and [`/pallets`](/pallets)
 
-### Fixes
+### Clarifications
 
-- Fixed some dead links and typos.
-- Standard versions have been added to MINT and MINTNFT where previously there were none. Tools
-  should consider these interactions as 0.1 where non-specified.
-- NFT standard used "name" as "instance" and as missing "instance". This has been fixed and
-  additionally clarified.
+**General**
+
+- explained the technical differences between each standard
+- expanded on double-spending issues and batching recommendations in the [implementers guide](/extrinsics/implementers-guide.md) for the extrinsics-based standards
+
+**1.0.0**
+
+- new examples throughout
+- more explicit about optional metadata in [NFTs](/extrinsics/rmrk1.0.0/entities/nft.md) and [Collections](/extrinsics/rmrk1.0.0/entities/collection.md)
+- use `balances.transfer` _only_ to facilitate [BUY](/extrinsics/rmrk1.0.0/interactions/buy.md) interactions
+- [LIST](/extrinsics/rmrk1.0.0/interactions/list.md) interactions need to exist for at least 5 blocks before the next
+- [CONSUME](/extrinsics/rmrk1.0.0/interactions/consume.md) reason optional, defaults to `true`
+
+**2.0.0**
