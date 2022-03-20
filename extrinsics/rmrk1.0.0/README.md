@@ -1,11 +1,11 @@
 # RMRK 1.0.0 standard
 
-The following **entities** are defined:
+### The 1.0.0 standard has the following entities:
 
 - [COLLECTION + Metadata](entities/collection.md)
 - [NFT + Metadata](entities/nft.md)
 
-The following **interactions** are possible:
+### The 1.0.0 standard has the following interactions:
 
 - [MINT](interactions/mint.md) (Minting a collection)
 - [CHANGEISSUER](interactions/changeissuer.md) (Changing the issuer of a collection)
