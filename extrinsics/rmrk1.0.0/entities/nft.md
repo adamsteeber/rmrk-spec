@@ -285,19 +285,7 @@ Metadata:
       "value": "Yes"
     }
   ],
-  "description": "Owner of this 1.0 NFT at the time of launch of 2.0 will be rewarded a full sandwich with the following traits:\n\n
-
-    | **Trait**          | **Details**                            |\n
-    |:-------------------|:---------------------------------------|\n
-    | Plate              | Uranium Ware                           |\n
-    | Ingredient Slots   | 8                                      |\n
-    | Ingredient NFTs    | 4 Base + 2 Rare + 1 Epic +1 Legendary* |\n
-    | Sandwich Pick NFT  | Epic Pick                              |\n
-    | Side Slot          | 1 Side Slot                            |\n\n
-
-    Tickets must be burned by the end of 2022 to be rewarded a full 2.0 sandwich.\n\n
-
-    *Legendary ingredient is designed by the NFT owner",
+  "description": "Owner of this 1.0 NFT at the time of launch of 2.0 will be rewarded a full sandwich with the following traits:\n\n| **Trait**          | **Details**                            |\n|:-------------------|:---------------------------------------|\n| Plate              | Uranium Ware                           |\n| Ingredient Slots   | 8                                      |\n| Ingredient NFTs    | 4 Base + 2 Rare + 1 Epic +1 Legendary* |\n| Sandwich Pick NFT  | Epic Pick                              |\n| Side Slot          | 1 Side Slot                            |\n\nTickets must be burned by the end of 2022 to be rewarded a full 2.0 sandwich.\n\n*Legendary ingredient is designed by the NFT owner",
   "image": "ipfs://ipfs/bafybeifpyytl6i56th6oksvkucklouridcwc6f574y33imf3f5kuicijiu",
   "external_url": "http://www.thesubclub.io/"
 }
