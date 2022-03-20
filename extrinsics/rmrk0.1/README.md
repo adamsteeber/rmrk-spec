@@ -1,4 +1,4 @@
-# RMRK 0.1 standard
+# (Depreciated) RMRK 0.1 standard
 
 The following **entities** are defined:
 
@@ -19,6 +19,6 @@ The following **interactions** are possible:
 
 - some NFTs published under this standard have been published without dedicated tools and are
   malformed.
-  [Example](https://polkascan.io/kusama/transaction/0xb8396caf702b3197cd6286b8d7424b255dd79e1e4d49e4a05ee66cae8d4bb3f3).
+  [Example](https://kusama.subscan.io/extrinsic/0xb8396caf702b3197cd6286b8d7424b255dd79e1e4d49e4a05ee66cae8d4bb3f3).
 - this spec version had a bug in that it did not specify a standard version in the MINT and MINTNFT
   interactions. When the version is missing from the MINT, it should be assumed to mean 0.1.
